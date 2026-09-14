@@ -1,6 +1,6 @@
 package book.library.demo;
 
-import book.library.demo.dto.BookLido;
+import book.library.demo.dto.BookRequestDTO;
 import book.library.demo.model.Book;
 import book.library.demo.model.Status;
 import book.library.demo.repository.BookRepository;
@@ -28,7 +28,7 @@ class BookServiceTest {
 
 	@Test
 	void deveCriarUmNovoLivroQuandoIsbnNaoExistir() {
-		BookLido dados = new BookLido(
+		BookRequestDTO dados = new BookRequestDTO(
 				"Dom Casmurro",
 				"Machado de Assis",
 				"9788535910663",

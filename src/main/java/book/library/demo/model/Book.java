@@ -1,6 +1,6 @@
 package book.library.demo.model;
 
-import book.library.demo.dto.BookLido;
+import book.library.demo.dto.BookRequestDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +26,7 @@ public class Book {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    public Book(BookLido book) {
+    public Book(BookRequestDTO book) {
         this.titulo = book.titulo();
         this.autor = book.autor();
         this.isbn = book.isbn();
