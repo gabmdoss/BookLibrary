@@ -4,6 +4,7 @@ import book.library.demo.dto.UserRequestDTO;
 import book.library.demo.exception.BusinessException;
 import book.library.demo.model.User;
 import book.library.demo.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -12,11 +13,12 @@ import java.util.Date;
 public class UserService {
 
     private final UserRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository repository) {
+    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
         this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
     }
-
 
     public User cadastrar(UserRequestDTO dados) {
 
@@ -44,11 +46,12 @@ public class UserService {
             );
         }
 
+        String senhaCriptografada = passwordEncoder.encode(dados.password());
 
         User user = new User(
                 null,
                 dados.username(),
-                dados.password(),
+                senhaCriptografada,
                 dados.nome(),
                 dados.email(),
                 new Date()
