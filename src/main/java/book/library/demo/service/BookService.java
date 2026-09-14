@@ -1,13 +1,12 @@
 package book.library.demo.service;
 
-import book.library.demo.dto.BookLido;
+import book.library.demo.dto.BookRequestDTO;
 import book.library.demo.model.Book;
 import book.library.demo.repository.BookRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,7 +17,7 @@ public class BookService {
         this.repository = repository;
     }
 
-    public Book salvar(BookLido dados) {
+    public Book salvar(BookRequestDTO dados) {
 
         Optional<Book> livroExistente = repository.findByIsbn(dados.isbn());
 
